@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             Title="Lista de Tareas">
+
+    <VerticalStackLayout Padding="10" Spacing="15">
+
+        <!-- Título -->
+        <Label Text="Gestor de Tareas"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
+        <!-- Entrada de texto para la tarea -->
+        <Entry x:Name="EntryTarea"
+               Placeholder="Escribe una tarea..."
+               FontSize="18" />
+
+        <!-- Botones de acciones -->
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Insertar"
+                    Clicked="Insertar_Clicked"
+                    BackgroundColor="Green"
+                    TextColor="White" />
+
+            <Button Text="Modificar"
+                    Clicked="Modificar_Clicked"
+                    BackgroundColor="Orange"
+                    TextColor="White" />
+
+            <Button Text="Borrar"
+                    Clicked="Borrar_Clicked"
+                    BackgroundColor="Red"
+                    TextColor="White" />
+        </HorizontalStackLayout>
+
+        <!-- Lista de tareas -->
+        <CollectionView x:Name="CollectionViewTareas"
+                        SelectionMode="Single"
+                        SelectionChanged="OnTareaSeleccionada"
+                        BackgroundColor="#f2f2f2"
+                        Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BackgroundColor="White"
+                           BorderColor="#ccc" CornerRadius="5">
+                        <Label Text="{Binding NombreTarea}"
+                               FontSize="18"
+                               TextColor="Black" />
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
